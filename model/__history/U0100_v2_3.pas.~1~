@@ -1,0 +1,18 @@
+unit U0100_v2_3;
+
+interface
+Type
+T0100_v2_3 = class
+  Num_Linha:integer;
+  Reg:string[4];
+  Conta:string[30];
+  Nome:string[100];
+  Desc_Conta:string;
+  Conta_Supe:string[30];
+  Conta_COSIF:integer;
+  Cod_Trib_DES_IF:integer;
+end;
+
+implementation
+
+end.

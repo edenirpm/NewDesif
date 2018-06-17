@@ -1,0 +1,11 @@
+unit U0100_v3_1;
+
+interface
+Type
+T0100_v3_1 = class
+
+end;
+
+implementation
+
+end.

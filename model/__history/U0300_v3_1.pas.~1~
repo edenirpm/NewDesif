@@ -1,0 +1,11 @@
+unit U0300_v3_1;
+
+interface
+type
+T0300_v3_1 = class
+
+end;
+
+implementation
+
+end.

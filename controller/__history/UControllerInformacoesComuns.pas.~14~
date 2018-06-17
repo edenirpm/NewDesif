@@ -1,0 +1,144 @@
+unit UControllerInformacoesComuns;
+
+interface
+
+uses
+  System.Classes,System.SysUtils,Vcl.Dialogs,
+  U0000_v2_3,
+  U0000_v3_1,
+  U0400_v2_3 ;
+
+Type
+TControllerInformacoesComuns=class
+ function importarTxt(ATxtFile:string):boolean;
+end;
+
+implementation
+
+{ TControllerInformacoesComuns }
+
+function TControllerInformacoesComuns.importarTxt(ATxtFile:string): boolean;
+var
+txt:TextFile;
+quebra:TStringList;
+arq:String;
+Identificador1:T0000_v2_3;
+Identificador2:T0000_v3_1;
+A0400:T0400_v2_3;
+begin
+ try
+  begin
+     Quebra:=TStringList.Create;
+      AssignFile(txt,ATxtFile);
+      reset(txt);
+      while not eof(txt) do
+      begin
+        Quebra.Clear;
+        Readln(txt,arq);
+        ExtractStrings(['|'],[],pchar(arq),Quebra);
+        try
+            case Quebra.Count of
+
+             11:begin
+                  if (Quebra.Strings[0] = '000001') and (Quebra.Strings[1] = '0000') and (Quebra.strings[10] = '2.3') then
+                   begin
+                    Identificador1:=T0000_v2_3.Create;
+                    Identificador1.Num_Linha:=Quebra.Strings[0].ToInteger;
+                    Identificador1.Reg:=Quebra.Strings[1].ToInteger;
+                    Identificador1.Cnpj:=Quebra.Strings[2].ToInteger;
+                    Identificador1.Nome:=Quebra.Strings[3];
+                    Identificador1.Tipo_inti:=Quebra.Strings[4];
+                    Identificador1.Cod_Munc:=Quebra.Strings[5].ToInteger;
+                    Identificador1.Ano_Mes_Inic_Cmpe:=Quebra.Strings[6];
+                    Identificador1.Ano_Mes_Fim_Cmpe:=Quebra.Strings[7];
+                    Identificador1.Modu_Dec:=Quebra.Strings[8].ToInteger;
+                    Identificador1.Tipo_Decl:=Quebra.Strings[9].ToInteger;
+                    Identificador1.Idn_Versao:=Quebra.Strings[10];
+                    Showmessage(Identificador1.Nome + 'Versao: ' + Identificador1.Idn_Versao);
+
+                   end;
+                end;
+
+             14:begin
+                 if (Quebra.Strings[0] = '000001') and (Quebra.Strings[1] = '0000') and ( Quebra.strings[13] = '2.3') then
+                 begin
+
+                  Identificador1:=T0000_v2_3.Create;
+                  Identificador1.Num_Linha:=Quebra.Strings[0].ToInteger;
+                  Identificador1.Reg:=Quebra.Strings[1].ToInteger;
+                  Identificador1.Cnpj:=Quebra.Strings[2].ToInteger;
+                  Identificador1.Nome:=Quebra.Strings[3];
+                  Identificador1.Tipo_inti:=Quebra.Strings[4];
+                  Identificador1.Cod_Munc:=Quebra.Strings[5].ToInteger;
+                  Identificador1.Ano_Mes_Inic_Cmpe:=Quebra.Strings[6];
+                  Identificador1.Ano_Mes_Fim_Cmpe:=Quebra.Strings[7];
+                  Identificador1.Modu_Dec:=Quebra.Strings[8].ToInteger;
+                  Identificador1.Tipo_Decl:=Quebra.Strings[9].ToInteger;
+                  Identificador1.Prtc_Decl_Ante:=Quebra.Strings[10];
+                  Identificador1.Tipo_Cnso:=Quebra.Strings[11].ToInteger;
+                  Identificador1.CNPJ_Resp_Rclh:=Quebra.Strings[12].ToInteger;
+                  Identificador1.Idn_Versao:=Quebra.Strings[13];
+                  Identificador1.Tipo_Arred:=Quebra.Strings[14].ToInteger;
+                  Showmessage(Identificador1.Nome + 'Versao: ' + Identificador1.Idn_Versao);
+                 end;
+                end;
+
+
+
+            end;
+         if Quebra.Strings[0] = '000002' then
+              begin
+                  case Quebra.Strings[1].ToInteger of
+                         0100:begin
+
+                              end;
+                          0200:begin
+
+                          end;
+                          0300:begin
+
+                          end;
+                          0400:begin
+                                A0400:=T0400_v2_3.Create;
+                                A0400.Num_Linha:=quebra.Strings[0].ToInteger;
+                                A0400.Reg:=quebra.Strings[1].ToInteger;
+                                A0400.Cod_Depe:=quebra.Strings[2];
+                                A0400.Indr_insc_Muni:=quebra.Strings[3];
+                                A0400.Cnpj_Proprio:=quebra.Strings[4].ToInteger;
+                                A0400.Tipo_Depe:=quebra.Strings[5].ToInteger;
+                                A0400.Endr_Depe:=quebra.Strings[6];
+                                A0400.Cnpj_Unif:=quebra.Strings[7].ToInteger;
+                                A0400.Cod_Munc:=quebra.Strings[8].ToInteger;
+                                A0400.Ctbl_Propria:=quebra.Strings[9];
+                                //A0400.Dat_Inic_Para:=quebra.Strings[10];
+                              //  A0400.Dat_Fim_Para:=quebra.Strings[11];
+                                Showmessage('Modulo de demonstrativo Contábil');
+                                A0400.Free;
+                               end;
+                         0410:begin
+
+                         end;
+                  end;
+
+              end;
+
+
+
+
+        Except
+
+        end;
+
+
+      end;
+  end;
+
+  finally
+    Identificador1.DisposeOf;
+    Quebra.DisposeOf;
+
+  end;
+end;
+initialization
+ReportMemoryLeaksOnShutdown:=true;
+end.

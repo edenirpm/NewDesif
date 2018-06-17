@@ -1,0 +1,54 @@
+unit U0200_v3_1;
+
+interface
+Type
+T0200_v3_1 = class
+  private
+    FIdto_Tari: ShortString;
+    FSub_Titu: ShortString;
+    FDesc_Tari: ShortString;
+    FNum_Linha: integer;
+    FReg: integer;
+    procedure SetDesc_Tari(const Value: ShortString);
+    procedure SetIdto_Tari(const Value: ShortString);
+    procedure SetNum_Linha(const Value: integer);
+    procedure SetReg(const Value: integer);
+    procedure SetSub_Titu(const Value: ShortString);
+  published
+property Num_Linha:integer read FNum_Linha write SetNum_Linha;
+property Reg:integer read FReg write SetReg;
+property Idto_Tari:string[20] read FIdto_Tari write SetIdto_Tari;
+property Desc_Tari:string[100] read FDesc_Tari write SetDesc_Tari;
+property Sub_Titu:string[30] read FSub_Titu write SetSub_Titu;
+end;
+
+implementation
+
+{ T0200_v3_1 }
+
+procedure T0200_v3_1.SetDesc_Tari(const Value: ShortString);
+begin
+  FDesc_Tari := Value;
+end;
+
+procedure T0200_v3_1.SetIdto_Tari(const Value: ShortString);
+begin
+  FIdto_Tari := Value;
+end;
+
+procedure T0200_v3_1.SetNum_Linha(const Value: integer);
+begin
+  FNum_Linha := Value;
+end;
+
+procedure T0200_v3_1.SetReg(const Value: integer);
+begin
+  FReg := Value;
+end;
+
+procedure T0200_v3_1.SetSub_Titu(const Value: ShortString);
+begin
+  FSub_Titu := Value;
+end;
+
+end.

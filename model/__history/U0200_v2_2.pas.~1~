@@ -1,0 +1,15 @@
+unit U0200_v2_2;
+
+interface
+Type
+T0200_v2_3 = class
+Num_Linha:integer;
+Reg:string[4];
+Idto_Tari:string[20];
+Desc_Tari:string[100];
+Sub_Titu:string[30];
+end;
+
+implementation
+
+end.

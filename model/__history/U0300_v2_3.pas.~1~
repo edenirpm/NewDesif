@@ -1,0 +1,15 @@
+unit U0300_v2_3;
+
+interface
+Type
+T0300_v2_3 = class
+  Num_Linha :integer;
+  Reg:string[4];
+  Idto_Serv_Remn_Varl:integer;
+  Desc_Compl_Serv_Remn_Varl:string;
+  Sub_Titu:string[30];
+end;
+
+implementation
+
+end.
